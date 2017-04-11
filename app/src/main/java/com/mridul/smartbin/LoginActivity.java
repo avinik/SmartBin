@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 /**
  * This class is for opening first activity just after you opens the app.
- * it will open registration activity if you want to register.
+ * it will open registration activity if you want to register or Forgot Password if you forgot your password.
  */
 
 public class LoginActivity extends AppCompatActivity {
