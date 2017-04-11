@@ -48,6 +48,9 @@ import org.json.JSONObject;
 
 public class PathMaker extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
 
+    private static int netDISTANCE = 0;
+    private static int netTIME = 0;
+
     private GoogleMap mMap;
     private Button btnFindPath;
 
@@ -131,6 +134,9 @@ public class PathMaker extends FragmentActivity implements OnMapReadyCallback, D
 
     private void sendRequest() {
 
+        netDISTANCE = 0 ;
+        netTIME = 0 ;
+
 
         //String[] checking = {"25.538794,84.850326","25.534607,84.853888","25.538944,84.858813","25.543116,84.862117", "25.547724,84.863919", "25.554132,84.869112"};
         int size = LATITUDE.size();
@@ -194,7 +200,7 @@ public class PathMaker extends FragmentActivity implements OnMapReadyCallback, D
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
+
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -232,20 +238,26 @@ public class PathMaker extends FragmentActivity implements OnMapReadyCallback, D
     }
 
     @Override
-    public void onDirectionFinderSuccess(List<Route> routes) {
+    public void onDirectionFinderSuccess(List<Route> routes, int dist, int time) {
+
+        netDISTANCE += dist ;
+        netTIME += time ;
+        String displayDistance = ""+(netDISTANCE/1000)+"."+(netDISTANCE%1000)+" KM";
+        String displayTime = ""+(netTIME/3600)+" hr "+((netTIME%3600)/60)+" min";
+
+
 
         polylinePaths = new ArrayList<>();
         originMarkers = new ArrayList<>();
         destinationMarkers = new ArrayList<>();
 
-        int distance = 0;
-        int time =0;
 
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 9));
-            ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
-            ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
-
+            /*((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
+            ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);*/
+            ((TextView) findViewById(R.id.tvDuration)).setText(displayTime);
+            ((TextView) findViewById(R.id.tvDistance)).setText(displayDistance);
 
             originMarkers.add(mMap.addMarker(new MarkerOptions()
                     .title(route.startAddress)

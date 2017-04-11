@@ -33,7 +33,7 @@ public class BackgroundWorkerSmsHandler extends AsyncTask<String, Void, String >
     protected String doInBackground(String... params) {
         String type = params[0];
 
-        String bin_update_sms_url = "http://172.16.190.235/bin_filled_status.php";
+        String bin_update_sms_url = "http://172.16.176.179/bin_filled_status.php";
 
         if (type.equals("updateSmsData")){
 

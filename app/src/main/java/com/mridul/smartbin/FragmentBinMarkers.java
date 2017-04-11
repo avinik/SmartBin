@@ -45,47 +45,27 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 
 
 public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
 
-
-    /*@Override
-    public void onCreate( Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        appCompatActivity = new AppCompatActivity();
-        appCompatActivity.setContentView(R.layout.fragment_bin_markers);
-
-        Button button = (Button)appCompatActivity.findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(appCompatActivity.getApplicationContext(), "this clicked", Toast.LENGTH_LONG).show();
-            }
-        });
-    }*/
-
-    /*@Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
-*/
-
     GoogleMap mGoogleMap;
-    String url = "http://172.16.190.235/123.php";
+    String url_locate_all_bins = "http://172.16.176.179/123.php";
+    String url_locate_filled_bins = "http://172.16.176.179/locate_filled_bins.php";
 
     ArrayList<String> lat=new ArrayList<>();    //used in downloader() fn.
     ArrayList<String> lng=new ArrayList<>();    //used in downloader() fn.
-
     ArrayList<String> binId=new ArrayList<>();
     protected View view;
+    MarkerOptions options;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         //view = inflater.inflate(R.layout.fragment_bin_markers, container, false);
-        AfterLogin1.toolbar.setTitle("Bin Markers");
+        AfterLogin1.toolbar.setTitle("Bin Locations");
 
 
 
@@ -95,12 +75,26 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
             //    activity.setContentView(R.layout.activity_bin_markers);
             view = inflater.inflate(R.layout.fragment_bin_markers, container, false);
 
-            Button button = (Button)view.findViewById(R.id.button10);
+            Button button = (Button)view.findViewById(R.id.btn_locate_all_bins);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mGoogleMap.clear();
                     try {
-                        locateBinNew(v);
+                        locateAllBins(v);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            Button button1 = (Button)view.findViewById(R.id.btn_locate_filled_bins);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mGoogleMap.clear();
+                    try {
+                        locateFilledBins(v);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -146,7 +140,7 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
         gotoLocationZoom(25.536014,84.8488763, 8);
 
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
+
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -164,13 +158,13 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
         mGoogleMap.moveCamera(update);
     }
 
-    public void locateBinNew(View view) throws IOException {
+    private void locateAllBins(View view) throws IOException {
 
         //permitting network on existing thread...
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
 
         // downloader() is used to download and data from server and store it in Array of String...
-        downloader(url);
+        downloader(url_locate_all_bins);
 
         int size = lat.size();
         for(int i=0; i<size; i++)
@@ -178,14 +172,13 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
 
             double latitude = Double.parseDouble(lat.get(i).toString());
             double longitude = Double.parseDouble(lng.get(i).toString());
-
             String BIN_ID = binId.get(i);
 
-            Log.v("Latitude is", "" + latitude);
+            /*Log.v("Latitude is", "" + latitude);
             Log.v("Longitude is", "" + longitude);
-            Log.v("binId is", "" + BIN_ID);
+            Log.v("binId is", "" + BIN_ID);*/
 
-            MarkerOptions options = new MarkerOptions()
+            options = new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
                     .snippet("A Bin is HERE")
                     .title(BIN_ID);
@@ -232,6 +225,49 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
         alertDialog.show();
 
     }
+
+
+    private void locateFilledBins(View view) throws IOException {
+
+        GoogleMap googleMap2 = mGoogleMap;
+
+        //permitting network on existing thread...
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
+
+        // downloader() is used to download and data from server and store it in Array of String...
+        downloader(url_locate_filled_bins);
+
+        int size = lat.size();
+        for(int i=0; i<size; i++)
+        {
+
+            double latitude = Double.parseDouble(lat.get(i).toString());
+            double longitude = Double.parseDouble(lng.get(i).toString());
+            String BIN_ID = binId.get(i);
+
+            /*Log.v("Latitude is", "" + latitude);
+            Log.v("Longitude is", "" + longitude);
+            Log.v("binId is", "" + BIN_ID);*/
+
+            if(BIN_ID.equals("BINSTART") || BIN_ID.equals("BINEND")){
+                // Do not add marker for START & END position !!!
+            }else {
+
+                MarkerOptions options = new MarkerOptions()
+                        .position(new LatLng(latitude, longitude))
+                        .snippet("A Bin is HERE")
+                        .title(BIN_ID);
+                googleMap2.addMarker(options);
+            }
+
+        }
+
+
+    }
+
+
+
+
 
     // method used to download bin_details( lat, lng, id ) from server.
     public void downloader(String address){

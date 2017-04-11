@@ -45,7 +45,7 @@ public class BackgroundWorkerPathMaker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         String type = params[0];
-        String make_path_url = "http://172.16.190.235/optimized_path.php";
+        String make_path_url = "http://172.16.176.179/optimized_path.php";
 
         if (type.equals("forMakingPath")){
             //connect & get string of data.

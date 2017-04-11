@@ -119,6 +119,11 @@ public class FragmentInstallBins extends Fragment {
                 tvDetails.setText("Selected Place for Installing Bin:-");
                 tvPlaceName.setText(place.getName());
                 tvPlaceAddress.setText("Address :"+place.getAddress());
+
+                String type2 = "generateAllCombinations";
+                BackgroundWorkerGenerateAllCombinations bg = new BackgroundWorkerGenerateAllCombinations(getContext());
+                bg.execute(type2);
+
                 /*if(place.getAttributions() == null){
                     webView.loadData("No Attributions found","text/html; charset=utf-8", "UTF-8");
                 }else{

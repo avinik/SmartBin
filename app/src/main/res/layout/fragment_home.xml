@@ -11,7 +11,7 @@
         android:layout_marginTop="200dp"
         android:layout_gravity="center"
         android:id="@+id/mark_bins"
-        android:onClick="markInstalledBins"/>
+        />
 
     <Button
         android:text="place picker"
@@ -20,7 +20,7 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:id="@+id/button_place_picker"
-        android:onClick="placepickerlayout"/>
+        />
 
     <Button
         android:text="Route maker"
@@ -29,6 +29,6 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:id="@+id/button"
-        android:onClick="gotoPathMakerLayout"/>
+        />
 
 </LinearLayout>

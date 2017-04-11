@@ -9,18 +9,21 @@
             android:title="Bin Locations" />
 
         <item android:id="@+id/navigation_pickerHome"
-            android:title="Install Bin" />
+            android:title="Install Bins" />
 
         <item android:id="@+id/navigation_pathMaker"
-            android:title="Make Path" />
+            android:title="Route Maker" />
 
         <item android:id="@+id/navigation_path_start_pos"
             android:title="Start/End path position" />
 
+        <item android:id="@+id/navigation_driver_management"
+            android:title="Driver Management" />
+
 
     </group>
 
-    <item android:title="Info">
+    <item android:title="Information">
         <menu>
             <item
                 android:id="@+id/account_info"

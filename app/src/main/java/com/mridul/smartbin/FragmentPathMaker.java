@@ -23,6 +23,7 @@ public class FragmentPathMaker extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_path_maker, container, false);
+        AfterLogin1.toolbar.setTitle("Route Maker");
 
         btn_open_pathmaker = (Button)view.findViewById(R.id.btn_open_makepath_window);
         btn_flush_filled_bins = (Button)view.findViewById(R.id.btn_flush_bin_data);

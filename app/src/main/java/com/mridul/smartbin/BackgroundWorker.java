@@ -49,15 +49,15 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         String type = params[0];
 
-        String login_url = "http://172.16.190.235/login.php";
-        String register_url = "http://172.16.190.235/register.php";
-        String delete_url = "http://172.16.190.235/deletebin.php";
-        String resetPassword_url = "http://172.16.190.235/mailer/reset-password-send-mail.php";
-        String accountInfo_url = "http://172.16.190.235/account-info.php";
-        String changePassword_url = "http://172.16.190.235/change-password.php";
-        String path_starting_point_url = "http://172.16.190.235/path_start_position.php";
-        String path_ending_point_url = "http://172.16.190.235/path_end_position.php";
-        String install_bin_url = "http://172.16.190.235/install_bin.php";
+        String login_url = "http://172.16.176.179/login.php";
+        String register_url = "http://172.16.176.179/register.php";
+        String delete_url = "http://172.16.176.179/deletebin.php";
+        String resetPassword_url = "http://172.16.176.179/mailer/reset-password-send-mail.php";
+        String accountInfo_url = "http://172.16.176.179/account-info.php";
+        String changePassword_url = "http://172.16.176.179/change-password.php";
+        String path_starting_point_url = "http://172.16.176.179/path_start_position.php";
+        String path_ending_point_url = "http://172.16.176.179/path_end_position.php";
+        String install_bin_url = "http://172.16.176.179/install_bin.php";
 
         if (type.equals("login")) {
             String email = params[1];

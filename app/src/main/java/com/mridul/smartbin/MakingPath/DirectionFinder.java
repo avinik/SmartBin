@@ -2,6 +2,7 @@ package com.mridul.smartbin.MakingPath;
 
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -138,6 +139,9 @@ public class DirectionFinder {
         if (data == null)
             return;
 
+        int dist = 0 ;
+        int time = 0 ;
+
         List<Route> routes = new ArrayList<Route>();
         JSONObject jsonData = new JSONObject(data);
         JSONArray jsonRoutes = jsonData.getJSONArray("routes");
@@ -154,7 +158,13 @@ public class DirectionFinder {
             JSONObject jsonStartLocation = jsonLeg.getJSONObject("start_location");
 
             route.distance = new Distance(jsonDistance.getString("text"), jsonDistance.getInt("value"));
+
+            dist = jsonDistance.getInt("value");
+
             route.duration = new Duration(jsonDuration.getString("text"), jsonDuration.getInt("value"));
+
+            time = jsonDuration.getInt("value");
+
             route.endAddress = jsonLeg.getString("end_address");
             route.startAddress = jsonLeg.getString("start_address");
             route.startLocation = new LatLng(jsonStartLocation.getDouble("lat"), jsonStartLocation.getDouble("lng"));
@@ -164,7 +174,7 @@ public class DirectionFinder {
             routes.add(route);
         }
 
-        listener.onDirectionFinderSuccess(routes);
+        listener.onDirectionFinderSuccess(routes, dist, time);
     }
 
     private List<LatLng> decodePolyLine(final String poly) {

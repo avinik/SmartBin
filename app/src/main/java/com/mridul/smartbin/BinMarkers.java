@@ -67,7 +67,7 @@ import java.util.concurrent.TimeUnit;
 public class BinMarkers extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mGoogleMap;
-    String url = "http://172.16.190.235/123.php";
+    String url = "http://172.16.176.179/123.php";
 
     ArrayList<String> lat=new ArrayList<>();    //used in downloader() fn.
     ArrayList<String> lng=new ArrayList<>();    //used in downloader() fn.
@@ -118,7 +118,7 @@ public class BinMarkers extends AppCompatActivity implements OnMapReadyCallback 
         gotoLocationZoom(25.536014,84.8488763, 8);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
+
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -244,35 +244,6 @@ public class BinMarkers extends AppCompatActivity implements OnMapReadyCallback 
         alertDialog.show();
 
     }
-
-    //below commented part was also for placing bin markers...may not work properly
-
-     /*   GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this).build();
-
-            String placeId = "ChIJ7dgFMOwtbzwRHACl6jeYr2Q" ; //placeid_array.get(i).toString();
-            Places.GeoDataApi.getPlaceById(mGoogleApiClient, "ChIJ7dgFMOwtbzwRHACl6jeYr2Q")
-                    .setResultCallback(new ResultCallback<PlaceBuffer>() {
-                        @Override
-                        public void onResult(PlaceBuffer places) {
-                            if (places.getStatus().isSuccess()) {
-                                final Place myPlace = places.get(0);
-
-                                LatLng queriedLocation = myPlace.getLatLng();
-                                Log.v("Latitude is", "" + queriedLocation.latitude);
-                                Log.v("Longitude is", "" + queriedLocation.longitude);
-                                double lat = queriedLocation.latitude;
-                                double lng = queriedLocation.longitude;
-
-                                MarkerOptions options = new MarkerOptions()
-                                        .position(new LatLng(lat, lng))
-                                        .snippet("A Bin is HERE");
-                                mGoogleMap.addMarker(options);
-                            }
-                            places.release();
-                        }
-                    });*/
-    //}
-
 
 
     // method used to download bin_details( lat, lng, id ) from server.

@@ -62,7 +62,7 @@ public class AfterLogin1 extends AppCompatActivity
         CURRENT_USER_EMAIL = i.getStringExtra("email");*/
         View header = navigationView.getHeaderView(0);
         TextView t = (TextView)header.findViewById(R.id.textView_nav_header) ;
-        t.append("\n"+CURRENT_USER_EMAIL+"");
+        t.append("\n===>> "+CURRENT_USER_EMAIL+"");
 //        t.setText(""+CURRENT_USER_EMAIL+"");
 //        Log.d("email",CURRENT_USER_EMAIL);
 
@@ -203,6 +203,10 @@ public class AfterLogin1 extends AppCompatActivity
                 //
                 fragment = new FragmentPlacePickerStart();
                 break;
+            case R.id.navigation_driver_management:
+                //
+                fragment = new FragmentDriverManagement();
+                break;
             case R.id.account_info:
                 // handle clicks here
                 Bundle bundle = new Bundle();
@@ -239,24 +243,11 @@ public class AfterLogin1 extends AppCompatActivity
 
     // proceed to activity where you can see location of all installed bins.
 
-
     protected void markInstalledBins(View view){
         Intent intent = new Intent(AfterLogin1.this,BinMarkers.class);
         startActivity(intent);
     }
 
-    // proceed to activity where you can install a bin on required location.
 
-
-    protected void placepickerlayout(View view){
-        // Do nothing.
-        // delete related button.
-    }
-
-
-
-    protected void gotoPathMakerLayout(View view){
-        startActivity(new Intent(this, PathMaker.class));
-    }
 
 }

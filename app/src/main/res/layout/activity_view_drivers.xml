@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingTop="24dp"
-    tools:context="com.mridul.smartbin.AccountInfo">
+    android:layout_marginTop="18dp"
+    android:layout_marginLeft="8dp"
+    tools:context="com.mridul.smartbin.Drivers.ViewDrivers">
 
     <ListView
-        android:id="@+id/listview_accountInfo"
+        android:id="@+id/lv_view_drivers"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
     </ListView>
 
