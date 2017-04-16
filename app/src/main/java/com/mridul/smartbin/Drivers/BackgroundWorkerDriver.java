@@ -27,6 +27,8 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import static com.mridul.smartbin.BackgroundWorker.IP_MAIN;
+
 public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
 
     ProgressDialog progressDialog;
@@ -49,8 +51,9 @@ public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
     protected String doInBackground(String... params) {
         String type = params[0];
 
-        String add_driver_url = "http://172.16.176.179/DriverManagement/add_driver.php";
-        String view_driver_url = "http://172.16.176.179/DriverManagement/view_drivers.php";
+        String add_driver_url = IP_MAIN+"DriverManagement/add_driver.php";
+        String view_driver_url = IP_MAIN+"DriverManagement/view_drivers.php";
+
 
         if (type.equals("addDriver")){
             String uName = params[1];
@@ -141,6 +144,7 @@ public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
 
         }
 
+
         return null;
     }
 
@@ -172,7 +176,7 @@ public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
                 alert.show();*/
                 Toast.makeText(context,data,Toast.LENGTH_LONG).show();
             }
-            else {
+            else if( !data.equals("No data found !") ){
                 Intent intent = new Intent(context, ViewDrivers.class);
                 intent.putExtra("jsonString_driverDetails", data);
                 context.startActivity(intent);

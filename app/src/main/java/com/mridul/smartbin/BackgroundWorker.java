@@ -25,12 +25,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 
+
 /**
  * Presently this class is used to fetch data from server for login and user_registration & much more.
  */
 
 public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
+    public static String IP_MAIN = "http://172.16.187.100/";
     public static String CURRENT_USER_EMAIL;
 
     Context context;
@@ -49,15 +51,15 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         String type = params[0];
 
-        String login_url = "http://172.16.176.179/login.php";
-        String register_url = "http://172.16.176.179/register.php";
-        String delete_url = "http://172.16.176.179/deletebin.php";
-        String resetPassword_url = "http://172.16.176.179/mailer/reset-password-send-mail.php";
-        String accountInfo_url = "http://172.16.176.179/account-info.php";
-        String changePassword_url = "http://172.16.176.179/change-password.php";
-        String path_starting_point_url = "http://172.16.176.179/path_start_position.php";
-        String path_ending_point_url = "http://172.16.176.179/path_end_position.php";
-        String install_bin_url = "http://172.16.176.179/install_bin.php";
+        String login_url = IP_MAIN + "login.php";
+        String register_url = IP_MAIN + "register.php";
+        String delete_url = IP_MAIN+"deletebin.php";
+        String resetPassword_url = IP_MAIN+"mailer/reset-password-send-mail.php";
+        String accountInfo_url = IP_MAIN+"account-info.php";
+        String changePassword_url = IP_MAIN+"change-password.php";
+        String path_starting_point_url = IP_MAIN+"path_start_position.php";
+        String path_ending_point_url = IP_MAIN+"path_end_position.php";
+        String install_bin_url = IP_MAIN+"install_bin.php";
 
         if (type.equals("login")) {
             String email = params[1];

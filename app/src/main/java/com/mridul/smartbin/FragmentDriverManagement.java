@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.mridul.smartbin.Drivers.AddDriver;
 import com.mridul.smartbin.Drivers.BackgroundWorkerDriver;
+import com.mridul.smartbin.Drivers.RemoveDriver;
 import com.mridul.smartbin.Drivers.ViewDrivers;
 
 public class FragmentDriverManagement extends Fragment{
@@ -40,6 +41,16 @@ public class FragmentDriverManagement extends Fragment{
                 String type = "viewDriver";
                 BackgroundWorkerDriver backgroundWorkerDriver = new BackgroundWorkerDriver(getContext());
                 backgroundWorkerDriver.execute(type);
+            }
+        });
+
+        Button btn_remove_driver = (Button)view.findViewById(R.id.btn_remove_driver);
+        btn_remove_driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), RemoveDriver.class));
+
             }
         });
 

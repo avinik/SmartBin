@@ -25,6 +25,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import static com.mridul.smartbin.BackgroundWorker.IP_MAIN;
+
 
 public class BackgroundWorkerPathMaker extends AsyncTask<String, Void, String> {
 
@@ -45,7 +47,7 @@ public class BackgroundWorkerPathMaker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         String type = params[0];
-        String make_path_url = "http://172.16.176.179/optimized_path.php";
+        String make_path_url = IP_MAIN+"optimized_path.php";
 
         if (type.equals("forMakingPath")){
             //connect & get string of data.

@@ -135,9 +135,20 @@ public class FragmentPlacePickerStart extends Fragment {
                 BackgroundWorker backgroundWorker = new BackgroundWorker(getContext());
                 backgroundWorker.execute(type, placeId, name, address, lat.toString(), lng.toString());
 
+
+
                 tvDetails.setText("Place selected for Start Position:-");
                 tvPlaceName.setText(place.getName());
                 tvPlaceAddress.setText("Address :"+place.getAddress());
+
+
+
+                // trying to update BINSTART combinations on server.
+                String type2 = "combinationsBINSTART";
+                BackgroundWorkerGenerateAllCombinations bg1 = new BackgroundWorkerGenerateAllCombinations(getContext());
+                bg1.execute(type2);
+
+
                 /*if(place.getAttributions() == null){
                     webView.loadData("No Attributions found","text/html; charset=utf-8", "UTF-8");
                 }else{
@@ -168,6 +179,14 @@ public class FragmentPlacePickerStart extends Fragment {
                     tvDetails.setText("Place selected for End Position:-");
                     tvPlaceName.setText(place.getName());
                     tvPlaceAddress.setText("Address :\n"+place.getAddress());
+
+                    // trying to update BINEND combinations on server.
+                    String type3 = "combinationsBINEND";
+                    BackgroundWorkerGenerateAllCombinations bg2 = new BackgroundWorkerGenerateAllCombinations(getContext());
+                    bg2.execute(type3);
+
+
+
                     /*if(place.getAttributions() == null){
                         webView.loadData("No Attributions found","text/html; charset=utf-8", "UTF-8");
                     }else{

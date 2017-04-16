@@ -1,8 +1,9 @@
-package com.mridul.smartbin;
+package com.mridul.smartbin.Drivers;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,35 +20,27 @@ import java.net.URLEncoder;
 
 import static com.mridul.smartbin.BackgroundWorker.IP_MAIN;
 
-public class BackgroundWorkerSmsHandler extends AsyncTask<String, Void, String >{
+
+public class BackgroundWorkerDriverRemove extends AsyncTask<String, Void, String> {
 
     Context context;
-
-    BackgroundWorkerSmsHandler(Context context1){
+    public BackgroundWorkerDriverRemove(Context context1){
         context = context1;
-    }
-
-    public BackgroundWorkerSmsHandler() {
-
     }
 
     @Override
     protected String doInBackground(String... params) {
+
         String type = params[0];
 
-        String bin_update_sms_url = IP_MAIN+"bin_filled_status.php";
+        String remove_driver_url = IP_MAIN+"DriverManagement/remove_driver.php";
 
-        if (type.equals("updateSmsData")){
-
-            String bin_id = params[1];
-            String percentage = params[2];
-
-
-            Log.d("just entered work",bin_id+"  "+percentage);
+        if (type.equals("removeDriver")){
+            String uName = params[1];
 
             URL url = null;
             try {
-                url = new URL(bin_update_sms_url);
+                url = new URL(remove_driver_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -55,8 +48,10 @@ public class BackgroundWorkerSmsHandler extends AsyncTask<String, Void, String >
 
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String postdata = URLEncoder.encode("bin_id", "UTF-8") + "=" + URLEncoder.encode(bin_id, "UTF-8") + "&"
-                        + URLEncoder.encode("percentage_filled", "UTF-8") + "=" + URLEncoder.encode(percentage, "UTF-8");
+                String postdata = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(uName, "UTF-8") ;
+
+                Log.d("postdata :", ""+postdata);
+
                 bufferedWriter.write(postdata);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -72,9 +67,6 @@ public class BackgroundWorkerSmsHandler extends AsyncTask<String, Void, String >
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-
-                Log.d("think work done",""+result);
-
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -84,24 +76,17 @@ public class BackgroundWorkerSmsHandler extends AsyncTask<String, Void, String >
                 e.printStackTrace();
             }
         }
-        return null ;
+
+
+        return null;
     }
 
     @Override
-    protected void onPreExecute() {
+    protected void onPostExecute(String data) {
 
+        if(data.equals("Driver Has been successfully Removed") || data.equals("Error in Removing Driver") || data.equals("Driver User Name NOT found in Database")){
+
+            Toast.makeText(context,data,Toast.LENGTH_LONG).show();
+        }
     }
-
-    @Override
-    protected void onPostExecute(String result) {
-
-    }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
-
-
-
 }

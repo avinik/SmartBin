@@ -3,6 +3,7 @@ package com.mridul.smartbin.Drivers;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,14 @@ public class AddDriver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_driver);
+
+
+        Toolbar tbar = (Toolbar)findViewById(R.id.tbar_act_add_driver);
+        tbar.setTitle("Add Driver");
+        tbar.setTitleTextColor(getResources().getColor(R.color.WHITE));
+        setSupportActionBar(tbar);
+
+
 
         et_uName = (EditText)findViewById(R.id.et_driver_user_name);
         et_name = (EditText)findViewById(R.id.et_driver_name);

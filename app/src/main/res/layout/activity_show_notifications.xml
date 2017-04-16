@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context="com.mridul.smartbin.Drivers.ViewDrivers">
+    tools:context="com.mridul.smartbin.ShowNotifications"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tbar_act_each_driver_detail"
+        android:id="@+id/tbar_act_view_notifications"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ListView
-        android:id="@+id/lv_view_each_driver"
+        android:id="@+id/lv_view_notifications"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="15dp"
@@ -23,5 +23,6 @@
         android:layout_marginRight="5dp">
 
     </ListView>
+
 
 </LinearLayout>

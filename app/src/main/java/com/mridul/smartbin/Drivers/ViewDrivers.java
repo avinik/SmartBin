@@ -1,12 +1,14 @@
 package com.mridul.smartbin.Drivers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -29,6 +31,14 @@ public class ViewDrivers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_drivers);
+
+        Toolbar tbar = (Toolbar)findViewById(R.id.tbar_act_view_drivers);
+        tbar.setTitle("Drivers' List");
+        tbar.setTitleTextColor(getResources().getColor(R.color.WHITE));
+        setSupportActionBar(tbar);
+
+
+
 
         Intent intent1 = getIntent();
         String data = intent1.getStringExtra("jsonString_driverDetails");
@@ -77,6 +87,8 @@ public class ViewDrivers extends AppCompatActivity {
         }
 
         listView.setAdapter(adapter);
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,6 +101,8 @@ public class ViewDrivers extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
     }

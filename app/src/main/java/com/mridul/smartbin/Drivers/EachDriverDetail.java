@@ -3,6 +3,7 @@ package com.mridul.smartbin.Drivers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,6 +26,13 @@ public class EachDriverDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_each_driver_detail);
+
+
+        Toolbar tbar = (Toolbar)findViewById(R.id.tbar_act_each_driver_detail);
+        tbar.setTitle("Driver Details");
+        tbar.setTitleTextColor(getResources().getColor(R.color.WHITE));
+        setSupportActionBar(tbar);
+
 
 
         Intent intent1 = getIntent();

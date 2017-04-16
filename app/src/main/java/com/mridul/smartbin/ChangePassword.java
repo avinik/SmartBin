@@ -3,6 +3,7 @@ package com.mridul.smartbin;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,11 @@ public class ChangePassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+
+        Toolbar tbar = (Toolbar)findViewById(R.id.tbar_act_change_password_admin);
+        tbar.setTitle("Change Password");
+        tbar.setTitleTextColor(getResources().getColor(R.color.WHITE));
+        setSupportActionBar(tbar);
 
         Intent intent = getIntent();
         EMAIL = intent.getStringExtra("email");

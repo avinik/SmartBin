@@ -4,21 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="15sp"
+        android:text="Click on ADD DRIVER to add a garbage collector ."/>
+
     <Button
         android:id="@+id/btn_add_driver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="Add Driver" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="15sp"
+        android:text="Click on VIEW DRIVERS to see the list of all Drivers ."/>
 
     <Button
         android:id="@+id/btn_view_driver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="View Drivers" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="15sp"
+        android:text="The Button below enables you to remove a driver from the list ."/>
 
     <Button
         android:id="@+id/btn_remove_driver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remove Driver" />
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Remove a Driver" />
 </LinearLayout>

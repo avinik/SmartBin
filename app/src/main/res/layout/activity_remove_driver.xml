@@ -1,50 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.mridul.smartbin.ForgotPassword">
+    tools:context="com.mridul.smartbin.Drivers.RemoveDriver">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tbar_act_forgot_password_admin"
+        android:id="@+id/tbar_act_remove_driver"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+
     <EditText
-        android:id="@+id/editText_resetPass"
+        android:id="@+id/et_driver_remove_uName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="27dp"
         android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:hint="Enter Registered email"
-        android:inputType="textEmailAddress"
+        android:layout_marginRight="8dp"
+        android:inputType="textPersonName"
+        android:hint="User Name"
         />
 
     <Button
-        android:id="@+id/button_reset_password"
+        android:id="@+id/btn_driver_remove_finally"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="27dp"
         android:layout_gravity="center"
-        android:text="reset password"
-
-        android:onClick="resetPassword"/>
+        android:text="Remove Driver" />
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:text="Just enter the User Name of Driver you want to remove from the list and hit REMOVE DRIVER button.\nIn case you don't remember UserName, goto View Drivers section in previous Window. There you can find details of all drivers."
         android:textSize="15sp"
-        android:text="Enter your Registered E-mail Address and hit RESET PASSWORD button to reset your password .
-After successful resetting, new password will be sent to your Registered E-mail ."
-        />
+        android:textStyle="italic" />
+
 </LinearLayout>

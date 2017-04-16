@@ -59,6 +59,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static com.mridul.smartbin.BackgroundWorker.IP_MAIN;
+
 
 /**
  * This class is used to mark all rhe bins on the map.
@@ -67,7 +69,7 @@ import java.util.concurrent.TimeUnit;
 public class BinMarkers extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mGoogleMap;
-    String url = "http://172.16.176.179/123.php";
+    String url = IP_MAIN+"123.php";
 
     ArrayList<String> lat=new ArrayList<>();    //used in downloader() fn.
     ArrayList<String> lng=new ArrayList<>();    //used in downloader() fn.

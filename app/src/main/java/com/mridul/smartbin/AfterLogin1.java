@@ -62,7 +62,7 @@ public class AfterLogin1 extends AppCompatActivity
         CURRENT_USER_EMAIL = i.getStringExtra("email");*/
         View header = navigationView.getHeaderView(0);
         TextView t = (TextView)header.findViewById(R.id.textView_nav_header) ;
-        t.append("\n===>> "+CURRENT_USER_EMAIL+"");
+        t.append("\n==> "+CURRENT_USER_EMAIL+"");
 //        t.setText(""+CURRENT_USER_EMAIL+"");
 //        Log.d("email",CURRENT_USER_EMAIL);
 
@@ -220,7 +220,7 @@ public class AfterLogin1 extends AppCompatActivity
                 break;
             case R.id.app_info:
                 // handle clicks here
-                Toast.makeText(this,"app info Clicked",Toast.LENGTH_LONG).show();
+                fragment = new FragmentNotifications();
                 break;
         }
 
