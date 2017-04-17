@@ -7,23 +7,23 @@
             android:title="Home" />
 
         <item android:id="@+id/navigation_bin_locations"
-            android:icon="@drawable/bin_location_icon"
+
             android:title="Bin Locations" />
 
         <item android:id="@+id/navigation_pickerHome"
-            android:icon="@drawable/install_bin_icon"
+
             android:title="Install Bins" />
 
         <item android:id="@+id/navigation_pathMaker"
-            android:icon="@drawable/path_maker_icon4"
+
             android:title="Route Maker" />
 
         <item android:id="@+id/navigation_path_start_pos"
-            android:icon="@drawable/start_pos_icon"
+
             android:title="Start/End path position" />
 
         <item android:id="@+id/navigation_driver_management"
-            android:icon="@drawable/driver_mgmt_icon"
+
             android:title="Driver Management" />
 
 
@@ -33,11 +33,11 @@
         <menu>
             <item
                 android:id="@+id/account_info"
-                android:icon="@drawable/account_avatar"
+
                 android:title="Account Info" />
             <item
                 android:id="@+id/app_info"
-                android:icon="@drawable/notification_icon"
+
                 android:title="Notifications" />
         </menu>
     </item>

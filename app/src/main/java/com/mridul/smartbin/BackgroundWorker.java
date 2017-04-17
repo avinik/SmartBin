@@ -32,7 +32,7 @@ import java.net.URLEncoder;
 
 public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
-    public static String IP_MAIN = "http://172.16.187.100/";
+    public static String IP_MAIN = "http://172.16.185.112/";
     public static String CURRENT_USER_EMAIL;
 
     Context context;
