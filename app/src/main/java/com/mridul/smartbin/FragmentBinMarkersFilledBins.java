@@ -3,13 +3,12 @@ package com.mridul.smartbin;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +21,11 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,26 +39,29 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
 import static com.mridul.smartbin.BackgroundWorker.IP_MAIN;
 
+/**
+ * Created by Mridul on 18-04-2017.
+ */
 
-public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
+public class FragmentBinMarkersFilledBins extends Fragment implements OnMapReadyCallback {
 
-    private GoogleMap mGoogleMap;
-    String url_locate_all_bins = IP_MAIN+"123.php"; // for filled bins.
+    private GoogleMap mGoogleMap1;
+
+    String url_locate_filled_bins1 = IP_MAIN+"locate_filled_bins.php";
 
     ArrayList<String> lat=new ArrayList<>();    //used in downloader() fn.
     ArrayList<String> lng=new ArrayList<>();    //used in downloader() fn.
     ArrayList<String> binId=new ArrayList<>();
     protected View view;
-    MarkerOptions options;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        //view = inflater.inflate(R.layout.fragment_bin_markers, container, false);
         AfterLogin1.toolbar.setTitle("Bin Locations");
 
 
@@ -70,22 +70,22 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
         if (googleServicesAvailable()) {
             Toast.makeText(getContext(), "Nice Play Services Working...", Toast.LENGTH_LONG).show();
             //    activity.setContentView(R.layout.activity_bin_markers);
-            view = inflater.inflate(R.layout.fragment_bin_markers, container, false);
+            view = inflater.inflate(R.layout.fragment_bin_markers_filled_bins, container, false);
 
-            Button button = (Button)view.findViewById(R.id.btn_locate_all_bins);
-            button.setOnClickListener(new View.OnClickListener() {
+
+
+            Button button1 = (Button)view.findViewById(R.id.btn_locate_filled_bins1);
+            button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mGoogleMap.clear();
+                    mGoogleMap1.clear();
                     try {
-                        locateAllBins(v);
+                        locateFilledBins(v);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             });
-
-
 
             //initializing maps...
             initMap();
@@ -97,8 +97,8 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
     }
 
     private void initMap() {
-        if(mGoogleMap == null) {
-            SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapfragment1);
+        if(mGoogleMap1 == null) {
+            SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapfragment1_filled_bins);
             mapFragment.getMapAsync(this);
         }
 
@@ -122,8 +122,8 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mGoogleMap = googleMap;
-        gotoLocationZoom(25.536014,84.8488763, 8);
+        mGoogleMap1 = googleMap;
+        gotoLocationZoom(25.536014,84.8488763, 6);
 
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -135,22 +135,28 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mGoogleMap.setMyLocationEnabled(true);
+        mGoogleMap1.setMyLocationEnabled(true);
     }
 
     private void gotoLocationZoom(double lat, double lng, float zoom) {
         LatLng latlng = new LatLng(lat, lng);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(latlng, zoom);
-        mGoogleMap.moveCamera(update);
+        mGoogleMap1.moveCamera(update);
     }
 
-    private void locateAllBins(View view) throws IOException {
+
+
+
+
+    private void locateFilledBins(View view) throws IOException {
+
+        GoogleMap googleMap2 = mGoogleMap1;
 
         //permitting network on existing thread...
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
 
         // downloader() is used to download and data from server and store it in Array of String...
-        downloader(url_locate_all_bins);
+        downloader(url_locate_filled_bins1);
 
         int size = lat.size();
         for(int i=0; i<size; i++)
@@ -164,50 +170,19 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
             Log.v("Longitude is", "" + longitude);
             Log.v("binId is", "" + BIN_ID);*/
 
-            options = new MarkerOptions()
-                    .position(new LatLng(latitude, longitude))
-                    .snippet("A Bin is HERE")
-                    .title(BIN_ID);
-            mGoogleMap.addMarker(options);
+            if(BIN_ID.equals("BINSTART") || BIN_ID.equals("BINEND")){
+                // Do not add marker for START & END position !!!
+            }else {
+
+                MarkerOptions options = new MarkerOptions()
+                        .position(new LatLng(latitude, longitude))
+                        .snippet("A Filled Bin is HERE")
+                        .title(BIN_ID);
+                googleMap2.addMarker(options);
+            }
 
         }
 
-        mGoogleMap.setOnInfoWindowLongClickListener(new GoogleMap.OnInfoWindowLongClickListener() {
-            @Override
-            public void onInfoWindowLongClick(Marker marker) {
-                // Enter your code here to delete a bin data.
-                delete_bin(marker);
-
-            }
-        });
-    }
-
-    private void delete_bin(Marker marker) {
-
-        final Marker markerTemp = marker;
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
-        alertDialogBuilder.setMessage("Are You sure, You want to remove bin");
-        alertDialogBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                BackgroundWorker backgroundWorker = new BackgroundWorker(getActivity());
-                backgroundWorker.execute("deletebin", markerTemp.getTitle());
-
-                markerTemp.remove();
-
-            }
-        });
-        alertDialogBuilder.setNegativeButton("Cancel" , new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog , int which){
-                Toast.makeText(getContext() , "Clicked Cancel Button" , Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
 
     }
 
@@ -282,4 +257,6 @@ public class FragmentBinMarkers extends Fragment implements OnMapReadyCallback{
 
 
     }
+
+
 }
