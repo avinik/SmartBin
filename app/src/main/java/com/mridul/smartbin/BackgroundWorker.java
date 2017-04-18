@@ -33,7 +33,10 @@ import static com.mridul.smartbin.BackgroundWorkerLoginActivity.START_POSITION_S
 
 public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
-    public static String IP_MAIN = "http://172.16.185.73/smartbin/";
+
+    public static String IP_MAIN = "http://172.16.190.212/smartbin/";
+    public static String CURRENT_USER_EMAIL;
+
 
     Context context;
     ProgressDialog progressDialog;

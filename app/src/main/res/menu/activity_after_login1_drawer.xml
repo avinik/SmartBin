@@ -6,6 +6,7 @@
             android:icon="@drawable/home_icon"
             android:title="Home" />
 
+
         <item android:id="@+id/navigation_bin_locations_all"
 
             android:title="All Bin Locations" />
@@ -13,6 +14,7 @@
         <item android:id="@+id/navigation_bin_locations_filled"
 
             android:title="Filled Bin Locations" />
+
 
         <item android:id="@+id/navigation_pickerHome"
 
