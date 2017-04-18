@@ -35,7 +35,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
 
     public static String IP_MAIN = "http://172.16.190.212/smartbin/";
-    public static String CURRENT_USER_EMAIL;
+
 
 
     Context context;
