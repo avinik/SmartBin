@@ -12,6 +12,6 @@
         android:layout_width="230dp"
         android:layout_height="250dp"
         android:id="@+id/splash"
-        android:background="@drawable/splash_img3" />
+        android:background="@drawable/smartbin" />
 
 </LinearLayout>
