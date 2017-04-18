@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import static com.mridul.smartbin.BackgroundWorker.CURRENT_USER_EMAIL;
+import static com.mridul.smartbin.BackgroundWorkerLoginActivity.CURRENT_USER_EMAIL;
 
 
 public class FragmentHome extends Fragment {

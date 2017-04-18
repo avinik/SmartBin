@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import static com.mridul.smartbin.BackgroundWorker.ACCOUNT_INFO_json_MOB_NO;
 import static com.mridul.smartbin.BackgroundWorker.ACCOUNT_INFO_json_NAME;
-import static com.mridul.smartbin.BackgroundWorker.CURRENT_USER_EMAIL;
+import static com.mridul.smartbin.BackgroundWorkerLoginActivity.CURRENT_USER_EMAIL;
 
 public class AfterLogin1 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -185,7 +185,7 @@ public class AfterLogin1 extends AppCompatActivity
                 //
                 fragment = new FragmentHome();
                 break;
-            case R.id.navigation_bin_locations:
+            case R.id.navigation_bin_locations_all:
                 //
                 fragment = new FragmentBinMarkers();
                 break;
@@ -199,9 +199,9 @@ public class AfterLogin1 extends AppCompatActivity
                 startActivity(intent1);*/
                 fragment = new FragmentPathMaker();
                 break;
-            case R.id.navigation_path_start_pos:
+            case R.id.navigation_bin_locations_filled:
                 //
-                fragment = new FragmentPlacePickerStart();
+                fragment = new FragmentBinMarkersFilledBins();
                 break;
             case R.id.navigation_driver_management:
                 //

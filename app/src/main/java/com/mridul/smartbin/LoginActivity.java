@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         String s_password = password.getText().toString();
         String type="login";
 
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        BackgroundWorkerLoginActivity backgroundWorker = new BackgroundWorkerLoginActivity(this);
         backgroundWorker.execute(type, s_email, s_password);
     }
 
