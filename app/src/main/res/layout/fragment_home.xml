@@ -1,35 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:id="@+id/fragment_home_screen"
+    >
 
-    <Button
-        android:text="mark installed bins"
+    <RelativeLayout
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="10dp">
+
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/shape_rectangle"
+            android:id="@+id/filled_bins_home"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+
+
+        <ImageView android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/shape_rectangle"
+            android:id="@+id/driver_management_home"/>
+
+
+
+        <ImageView android:layout_width="180dp"
+            android:layout_height="180dp"
+
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/shape_rectangle"
+            android:layout_marginTop="180dp"
+            android:id="@+id/path_maker_home"/>
+
+
+
+        <ImageView android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="180dp"
+            android:src="@drawable/shape_rectangle"
+            android:id="@+id/notifiction_home"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="40dp">
+
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/bin_location_icon"
+            android:id="@+id/imageView2" />
+
+
+
+        <ImageView android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/driver"
+            android:id="@+id/imageView3" />
+
+
+
+
+        <ImageView android:layout_width="120dp"
+            android:layout_height="120dp"
+
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/path_maker_icon4"
+            android:layout_marginTop="180dp"
+            android:id="@+id/imageView4" />
+
+
+
+        <ImageView android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="180dp"
+            android:src="@drawable/notification_icon"
+            android:id="@+id/imageView5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Filled Bins"
+            android:id="@+id/textView2"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignEnd="@+id/imageView2"
+            android:layout_marginEnd="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver Management"
+            android:id="@+id/textView4"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Path Maker"
+            android:id="@+id/textView3"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:layout_below="@+id/imageView4"
+            android:layout_alignStart="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:layout_below="@+id/imageView5"
+            android:layout_alignEnd="@+id/imageView5"
+            android:layout_marginEnd="11dp" />
+
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_gravity="center"
-        android:id="@+id/mark_bins"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:text="place picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:id="@+id/button_place_picker"
-        />
+        <ImageView
+            android:layout_width="390dp"
+            android:layout_height="80dp"
+            android:src="@drawable/smartbin1"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
-    <Button
-        android:text="Route maker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:id="@+id/button"
-        />
-
-</LinearLayout>
+</RelativeLayout>
