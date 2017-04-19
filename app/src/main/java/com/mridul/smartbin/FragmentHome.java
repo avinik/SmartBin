@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import static com.mridul.smartbin.BackgroundWorker.CURRENT_USER_EMAIL;
+import static com.mridul.smartbin.BackgroundWorkerLoginActivity.CURRENT_USER_EMAIL;
 
 
 public class FragmentHome extends Fragment {
@@ -28,7 +28,7 @@ public class FragmentHome extends Fragment {
 
         //Log.d("current email", ""+email_user);
         String type="accountInfo";
-        BackgroundWorker backgroundWorker = new BackgroundWorker(getContext());
+        BackgroundWorkerAccountInfo backgroundWorker = new BackgroundWorkerAccountInfo(getContext());
         backgroundWorker.execute(type, CURRENT_USER_EMAIL);
 
         return v;

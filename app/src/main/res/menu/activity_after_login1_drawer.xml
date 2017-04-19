@@ -6,9 +6,15 @@
             android:icon="@drawable/home_icon"
             android:title="Home" />
 
-        <item android:id="@+id/navigation_bin_locations"
 
-            android:title="Bin Locations" />
+        <item android:id="@+id/navigation_bin_locations_all"
+
+            android:title="All Bin Locations" />
+
+        <item android:id="@+id/navigation_bin_locations_filled"
+            android:icon="@drawable/bin_location_filled"
+            android:title="Filled Bin Locations" />
+
 
         <item android:id="@+id/navigation_pickerHome"
 
@@ -18,9 +24,6 @@
 
             android:title="Route Maker" />
 
-        <item android:id="@+id/navigation_path_start_pos"
-
-            android:title="Start/End path position" />
 
         <item android:id="@+id/navigation_driver_management"
 
@@ -33,11 +36,11 @@
         <menu>
             <item
                 android:id="@+id/account_info"
-
+                android:icon="@drawable/info_icon"
                 android:title="Account Info" />
             <item
                 android:id="@+id/app_info"
-
+                android:icon="@drawable/notification_icon"
                 android:title="Notifications" />
         </menu>
     </item>

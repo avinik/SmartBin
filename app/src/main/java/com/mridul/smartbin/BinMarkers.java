@@ -63,7 +63,8 @@ import static com.mridul.smartbin.BackgroundWorker.IP_MAIN;
 
 
 /**
- * This class is used to mark all rhe bins on the map.
+ * This class may be used to keep access of binmarkers functionality from home page.
+ * But it needs to be updated......
  */
 
 public class BinMarkers extends AppCompatActivity implements OnMapReadyCallback {
