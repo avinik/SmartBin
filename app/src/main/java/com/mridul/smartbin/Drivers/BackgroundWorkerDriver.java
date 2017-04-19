@@ -158,7 +158,7 @@ public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
         /*progressDialog.dismiss();*/
 
 
-        if(data.equals("Sorry! This UserName is already taken, Try another.") || data.equals("Sorry! Error Inserting Registering Data. Please try again.") || data.equals("Driver Registration Successful...You can now give Driver their UserName & Password to access GarbageCollect App.")){
+        if(data.trim().equals("Sorry! This UserName is already taken, Try another.") || data.trim().equals("Sorry! Error Inserting Registering Data. Please try again.") || data.trim().equals("Driver Registration Successful...You can now give Driver their UserName & Password to access GarbageCollect App.")){
 
             /*AlertDialog.Builder alert = new AlertDialog.Builder(context);
             alert.setTitle("Notification...");
@@ -168,7 +168,7 @@ public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
             Toast.makeText(context,data,Toast.LENGTH_LONG).show();
         }
         else{
-            if(data.equals("No data found !")){
+            if(data.trim().equals("No data found !")){
                 /*AlertDialog.Builder alert = new AlertDialog.Builder(context);
                 alert.setTitle("No Data Recieved...");
                 alert.setMessage("Sorry! No Drivers found in database. Please add one.");
@@ -176,7 +176,7 @@ public class BackgroundWorkerDriver extends AsyncTask<String, Void, String>{
                 alert.show();*/
                 Toast.makeText(context,data,Toast.LENGTH_LONG).show();
             }
-            else if( !data.equals("No data found !") ){
+            else if( !data.trim().equals("No data found !") ){
                 Intent intent = new Intent(context, ViewDrivers.class);
                 intent.putExtra("jsonString_driverDetails", data);
                 context.startActivity(intent);

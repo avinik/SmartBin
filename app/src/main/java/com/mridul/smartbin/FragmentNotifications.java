@@ -25,8 +25,12 @@ public class FragmentNotifications extends Fragment {
             @Override
             public void onClick(View v) {
                 // call background worker to parse notifications here...
-                Toast.makeText(getContext(),"Yes! I am clicked",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getContext(),ShowNotifications.class));
+                //Toast.makeText(getContext(),"Yes! I am clicked",Toast.LENGTH_LONG).show();
+                //startActivity(new Intent(getContext(),ShowNotifications.class));
+
+                String type = "getNotificationFromServer";
+                BackgroundWorkerNotifications bgwn = new BackgroundWorkerNotifications(getContext());
+                bgwn.execute(type);
             }
         });
 

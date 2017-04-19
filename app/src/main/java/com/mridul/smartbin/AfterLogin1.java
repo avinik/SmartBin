@@ -3,8 +3,6 @@ package com.mridul.smartbin;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -38,14 +36,7 @@ public class AfterLogin1 extends AppCompatActivity
         toolbar.setTitle("ManageBin");
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,13 +49,11 @@ public class AfterLogin1 extends AppCompatActivity
 
         displayFragment(R.id.navigation_home);
 
-        /*Intent i = getIntent();
-        CURRENT_USER_EMAIL = i.getStringExtra("email");*/
+
         View header = navigationView.getHeaderView(0);
         TextView t = (TextView)header.findViewById(R.id.textView_nav_header) ;
         t.append("\n==> "+CURRENT_USER_EMAIL+"");
-//        t.setText(""+CURRENT_USER_EMAIL+"");
-//        Log.d("email",CURRENT_USER_EMAIL);
+
 
     }
 
@@ -136,41 +125,6 @@ public class AfterLogin1 extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        /*switch(item.getItemId()){
-            case R.id.navigation_item1:
-                // handle clicks here
-                Toast.makeText(this,"navigation_item2 Clicked",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.navigation_item2:
-                // handle clicks here
-                Toast.makeText(this,"navigation_item2 Clicked",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.navigation_item3:
-                // handle clicks here
-                Toast.makeText(this,"navigation_item3 Clicked",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.navigation_logout:
-                // handle clicks here
-                startActivity(new Intent(this,LoginActivity.class));
-                Toast.makeText(this,"You have successfully Logged Out"+EMAIL,Toast.LENGTH_LONG).show();
-                break;
-            case R.id.account_info:
-                // handle clicks here
-                String type="accountInfo";
-
-                BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                backgroundWorker.execute(type, EMAIL);
-                *//*startActivity(new Intent(this,AccountInfo.class));
-                Toast.makeText(this,"Your account info",Toast.LENGTH_LONG).show();*//*
-                break;
-            case R.id.app_info:
-                // handle clicks here
-                Toast.makeText(this,"app info Clicked",Toast.LENGTH_LONG).show();
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);*/
 
         displayFragment(item.getItemId());
         return true;
@@ -238,15 +192,6 @@ public class AfterLogin1 extends AppCompatActivity
 
 
 
-
-
-
-    // proceed to activity where you can see location of all installed bins.
-
-    protected void markInstalledBins(View view){
-        Intent intent = new Intent(AfterLogin1.this,BinMarkers.class);
-        startActivity(intent);
-    }
 
 
 

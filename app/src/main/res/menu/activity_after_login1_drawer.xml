@@ -12,7 +12,7 @@
             android:title="All Bin Locations" />
 
         <item android:id="@+id/navigation_bin_locations_filled"
-
+            android:icon="@drawable/bin_location_filled"
             android:title="Filled Bin Locations" />
 
 
@@ -36,11 +36,11 @@
         <menu>
             <item
                 android:id="@+id/account_info"
-
+                android:icon="@drawable/info_icon"
                 android:title="Account Info" />
             <item
                 android:id="@+id/app_info"
-
+                android:icon="@drawable/notification_icon"
                 android:title="Notifications" />
         </menu>
     </item>
