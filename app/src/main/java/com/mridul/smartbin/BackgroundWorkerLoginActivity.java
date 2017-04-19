@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -98,7 +99,9 @@ public class BackgroundWorkerLoginActivity extends AsyncTask<String, Void, Strin
 
         progressDialog.dismiss();
 
-        if(result.equals("You are successfully Logged In")) {
+        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+
+        if(result.trim().equals("You are successfully Logged In")) {
 
             START_POSITION_SELECTED = "NO" ;
 
@@ -108,7 +111,7 @@ public class BackgroundWorkerLoginActivity extends AsyncTask<String, Void, Strin
             openAfterLogin();
 
         }else {
-            gotoLoginLayout();
+            //gotoLoginLayout();
         }
 
     }
