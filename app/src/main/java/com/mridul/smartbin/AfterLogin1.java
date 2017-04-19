@@ -19,8 +19,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.mridul.smartbin.BackgroundWorker.ACCOUNT_INFO_json_MOB_NO;
-import static com.mridul.smartbin.BackgroundWorker.ACCOUNT_INFO_json_NAME;
+import static com.mridul.smartbin.BackgroundWorkerAccountInfo.ACCOUNT_INFO_json_MOB_NO;
+import static com.mridul.smartbin.BackgroundWorkerAccountInfo.ACCOUNT_INFO_json_NAME;
 import static com.mridul.smartbin.BackgroundWorkerLoginActivity.CURRENT_USER_EMAIL;
 
 public class AfterLogin1 extends AppCompatActivity

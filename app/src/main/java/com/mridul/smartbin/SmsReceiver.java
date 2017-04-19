@@ -45,6 +45,13 @@ public class SmsReceiver extends BroadcastReceiver {
 
             Log.d("just before work",incomingNumber+"  "+incomingMsg);
 
+            String str1 = incomingMsg.replaceAll("[(]+" , "{");
+            String str2 = str1.replaceAll("[)]+" , "}");
+            incomingMsg = str2.trim();
+
+
+            Log.d("After json modification",incomingNumber+"  "+incomingMsg);
+
 
 
             String bin_id = "";

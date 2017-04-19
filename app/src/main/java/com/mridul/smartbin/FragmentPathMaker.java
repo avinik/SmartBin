@@ -42,8 +42,8 @@ public class FragmentPathMaker extends Fragment {
 
                     android.support.v7.app.AlertDialog.Builder alert = new android.support.v7.app.AlertDialog.Builder(getContext());
                     alert.setTitle("Important Notice!!");
-                    alert.setMessage("First Insert Start Position of path.");
-                    alert.setPositiveButton("Go", new DialogInterface.OnClickListener() {
+                    alert.setMessage("Please, First choose Start Position of the optimized path to be made .");
+                    alert.setPositiveButton("Choose", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -62,16 +62,19 @@ public class FragmentPathMaker extends Fragment {
             public void onClick(View v) {
                 android.support.v7.app.AlertDialog.Builder alert = new android.support.v7.app.AlertDialog.Builder(getContext());
                 alert.setTitle("Important Notice!!");
-                alert.setMessage("Garbage collection must be done before exiting this window.\nGoing back will Flush filled bins data on server.");
-                alert.setPositiveButton("Flush & Exit", new DialogInterface.OnClickListener() {
+                alert.setMessage("You have to FLUSH filled bins data only if Driver do not have GarbageCollect App .\nIf Driver has GarbageCollect App you need not to worry .");
+                alert.setPositiveButton("Flush", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Toast.makeText(getContext(),"Do Flushing Here",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(),"Do Flushing Here",Toast.LENGTH_LONG).show();
                         // Do flush Job here...
+                        String type = "flushFilledBins";
+                        BackgroundWorkerFlushBinData bgw = new BackgroundWorkerFlushBinData(getContext());
+                        bgw.execute(type);
                     }
                 });
-                alert.setNegativeButton("Stay", null);
+                alert.setNegativeButton("NO", null);
                 alert.show();
             }
         });
