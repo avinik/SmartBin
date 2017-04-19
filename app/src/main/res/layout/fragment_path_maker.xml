@@ -22,7 +22,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="60dp"
         android:layout_marginLeft="60dp"
-        android:text="MakePath" />
+        android:text="Make Path" />
 
     <TextView
 
@@ -32,7 +32,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
         android:textSize="15sp"
-        android:text="After Garbage Collection, it is necessary to FLUSH filled bins' data from server.\nFLUSHing must be done After Garbage Collection in case Garbage Collector do not have GarbageCollector app." />
+        android:text="After Garbage Collection, it is necessary to FLUSH filled bins' data from server.\nFLUSHing must be done by You After Garbage Collection in case Garbage Collector do not have GarbageCollect app." />
 
     <Button
         android:id="@+id/btn_flush_bin_data"

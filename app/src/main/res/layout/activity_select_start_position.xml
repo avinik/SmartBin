@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbar_start_path_position"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
 
@@ -13,7 +20,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:textSize="15sp"
-        android:text="Select Start Position" />
+        android:text="Please choose Start Position for making path.\n\nIn every new session of your Login, you will be asked to choose Start Position for making Path. This is done to make BIN status updated on server.\n\nAfter successful insertion of Start position on the server, you can go back and make path ." />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +32,7 @@
             android:id="@+id/btn_install_bins_startPos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Install A Bin" />
+            android:text="Choose Start Position" />
 
 
     </LinearLayout>

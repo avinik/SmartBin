@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
 
-public class SelectStartPosition extends Activity {
+public class SelectStartPosition extends AppCompatActivity {
 
     private static final int FINE_LOCATION_REQUEST_CODE_INSTALL_BIN = 110 ;
     private static final int PLACE_PICKER_REQUEST_CODE_INSTALL_BIN = 210 ;
@@ -38,6 +39,14 @@ public class SelectStartPosition extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_start_position);
+
+
+        Toolbar tbar = (Toolbar)findViewById(R.id.tbar_start_path_position);
+        tbar.setTitle("Start Position");
+        tbar.setTitleTextColor(getResources().getColor(R.color.WHITE));
+        setSupportActionBar(tbar);
+
+
 
         btnInstall = (Button) findViewById(R.id.btn_install_bins_startPos);
         tvPlaceName = (TextView) findViewById(R.id.tv_place_name_install_bins_startPos);
@@ -117,7 +126,7 @@ public class SelectStartPosition extends Activity {
 
                 tvDetails.setText("Place selected for Start Position:-");
                 tvPlaceName.setText(place.getName());
-                tvPlaceAddress.setText("Address :"+place.getAddress());
+                tvPlaceAddress.setText("Address : "+place.getAddress());
 
 
 

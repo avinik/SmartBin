@@ -47,7 +47,7 @@ public class BackgroundWorkerPathMaker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         String type = params[0];
-        String make_path_url = IP_MAIN+"optimized_path.php";
+        String make_path_url = IP_MAIN+"algo_input.php";
 
         if (type.equals("forMakingPath")){
             //connect & get string of data.

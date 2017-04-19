@@ -34,16 +34,13 @@ import static com.mridul.smartbin.BackgroundWorkerLoginActivity.START_POSITION_S
 public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
 
-    public static String IP_MAIN = "http://172.16.190.212/smartbin/";
+    public static String IP_MAIN = "http://172.16.187.17/smartbin/";
 
 
 
     Context context;
     ProgressDialog progressDialog;
 
-    protected  String json_NAME;
-    protected  String json_EMAIL;
-    protected  String json_MOB_NO;
 
     BackgroundWorker(Context context1){
         context = context1;
@@ -59,7 +56,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
         String register_url = IP_MAIN + "register.php";
         String delete_url = IP_MAIN+"deletebin.php";
         String resetPassword_url = IP_MAIN+"mailer/reset-password-send-mail.php";
-        String accountInfo_url = IP_MAIN+"account-info.php";
+
         String changePassword_url = IP_MAIN+"change-password.php";
         String path_starting_point_url = IP_MAIN+"path_start_position.php";
         String path_ending_point_url = IP_MAIN+"path_end_position.php";
@@ -230,62 +227,6 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             }
         }
-        else if (type.equals("accountInfo")){
-            String email = params[1];
-            URL url = null;
-
-            try {
-                url = new URL(accountInfo_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String postdata = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
-                bufferedWriter.write(postdata);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-
-                InputStream is = new BufferedInputStream(httpURLConnection.getInputStream());
-                BufferedReader br=new BufferedReader(new InputStreamReader(is));
-                StringBuilder sb= new StringBuilder();
-                String line = "";
-                if(br != null){
-                    while((line=br.readLine()) != null){
-                        sb.append(line).append('\n');
-                    }
-                }
-                String data = sb.toString();
-                Log.d("String from server : ", "" + data);
-
-                try {
-                    JSONObject jo = new JSONObject(data);
-
-                    json_NAME = jo.getString("name");
-                    json_EMAIL = jo.getString("email");
-                    json_MOB_NO = jo.getString("mob_no");
-
-                    br.close();
-                    is.close();
-                    httpURLConnection.disconnect();
-
-                    String result = "Your Account Info" ;
-                    return result;
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         else if (type.equals("pathStartingPosition")){
             String placeId = params[1];
             String name = params[2];
@@ -439,16 +380,8 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
     }
 
-
-    public static String ACCOUNT_INFO_json_EMAIL = "";
-    public static String ACCOUNT_INFO_json_NAME = "";
-    public static String ACCOUNT_INFO_json_MOB_NO = "";
-
     @Override
     protected void onPostExecute(String result) {
-
-        //alertDialog.setMessage(result);
-        //alertDialog.show();
 
         progressDialog.dismiss();
 
@@ -458,10 +391,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
 
         if( result.equals("Start Position Successfully Inserted")){
 
-            //Log.d("Start string :", result);
-            //Log.d("Start Position1 :", START_POSITION_SELECTED);
+            // Important...
             START_POSITION_SELECTED = "YES" ;
-            //Log.d("Start Position2 :", START_POSITION_SELECTED);
+
 
         }
         /*else if(result.equals("You are successfully Logged In")) {
@@ -471,18 +403,10 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
             openAfterLogin();
 
         }*/
-        else if(result.equals("Your Account Info")){
-            // show information about user's account here...
-            //gotoAccountInfoLayout();
-
-            ACCOUNT_INFO_json_EMAIL = json_EMAIL ;
-            ACCOUNT_INFO_json_NAME = json_NAME ;
-            ACCOUNT_INFO_json_MOB_NO = json_MOB_NO ;
-        }
         else if(result.equals("Bin Position successfully inserted on server") ){
-            //Log.d("Bin install1 :", START_POSITION_SELECTED);
+            // Important...
             START_POSITION_SELECTED = "NO" ;
-            //Log.d("Bin install2 :", START_POSITION_SELECTED);
+
         }
         else if(result.equals("Bin Has been Deleted")){
             // Do nothing.
